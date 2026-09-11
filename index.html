@@ -1,0 +1,3605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>My Daily Routine 💗</title>
+
+  <style>
+    :root {
+      --pink-light: #fff1f6;
+      --pink-card: #ffe3ed;
+      --pink-medium: #ff8fbd;
+      --pink-main: #ff5fa2;
+      --pink-dark: #c2185b;
+      --pink-deep: #8e164d;
+
+      --green: #43a86b;
+      --red: #e45f74;
+
+      --white: #ffffff;
+      --text: #522239;
+      --muted: #92677b;
+
+      --shadow: 0 12px 30px rgba(194, 24, 91, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background:
+        radial-gradient(circle at 10% 10%, #ffd4e6 0, transparent 25%),
+        radial-gradient(circle at 90% 20%, #ffe4f0 0, transparent 23%),
+        linear-gradient(135deg, #fff5f9, #ffe8f1);
+
+      min-height: 100vh;
+      color: var(--text);
+      padding-bottom: 50px;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    /* ---------- FLOATING STICKERS ---------- */
+
+    .sticker {
+      position: fixed;
+      font-size: 34px;
+      z-index: -1;
+      opacity: 0.35;
+      animation: floatSticker 5s ease-in-out infinite;
+    }
+
+    .sticker-1 {
+      top: 9%;
+      left: 3%;
+    }
+
+    .sticker-2 {
+      top: 24%;
+      right: 4%;
+      animation-delay: 1s;
+    }
+
+    .sticker-3 {
+      bottom: 15%;
+      left: 4%;
+      animation-delay: 2s;
+    }
+
+    .sticker-4 {
+      bottom: 8%;
+      right: 5%;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes floatSticker {
+      0%,
+      100% {
+        transform: translateY(0) rotate(-3deg);
+      }
+
+      50% {
+        transform: translateY(-12px) rotate(5deg);
+      }
+    }
+
+    /* ---------- MAIN ---------- */
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    /* ---------- HEADER ---------- */
+
+    header {
+      padding: 38px 0 22px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: clamp(30px, 5vw, 48px);
+      color: var(--pink-dark);
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .date {
+      display: inline-block;
+      background: white;
+      margin-top: 15px;
+      padding: 8px 18px;
+      border-radius: 100px;
+      box-shadow: var(--shadow);
+      color: var(--pink-dark);
+      font-weight: 700;
+    }
+
+    /* ---------- DASHBOARD ---------- */
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid #ffd2e3;
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-card .icon {
+      font-size: 27px;
+      margin-bottom: 5px;
+    }
+
+    .stat-card h3 {
+      font-size: 24px;
+      color: var(--pink-dark);
+    }
+
+    .stat-card p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ---------- PROGRESS ---------- */
+
+    .progress-section {
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .progress-wrapper {
+      height: 18px;
+      background: #ffe2ed;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      border-radius: 20px;
+      background: linear-gradient(
+        90deg,
+        var(--pink-main),
+        var(--pink-dark)
+      );
+
+      transition: width 0.5s ease;
+    }
+
+    /* ---------- CURRENT TASK ---------- */
+
+    .current-card {
+      background:
+        linear-gradient(
+          135deg,
+          var(--pink-dark),
+          var(--pink-main)
+        );
+
+      color: white;
+      border-radius: 22px;
+      padding: 22px;
+      margin-bottom: 22px;
+      box-shadow: 0 15px 35px rgba(194, 24, 91, 0.25);
+    }
+
+    .current-card small {
+      opacity: 0.85;
+    }
+
+    .current-card h2 {
+      margin: 7px 0;
+      font-size: 22px;
+    }
+
+    #countdown {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    /* ---------- TASK CARD ---------- */
+
+    .section-title {
+      margin: 30px 0 15px;
+      color: var(--pink-dark);
+      font-size: 24px;
+    }
+
+    .tasks {
+      display: grid;
+      gap: 15px;
+    }
+
+    .task-card {
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid transparent;
+      border-radius: 22px;
+      padding: 18px 20px;
+
+      display: flex;
+      align-items: center;
+      gap: 17px;
+
+      box-shadow: var(--shadow);
+
+      transition:
+        transform 0.2s ease,
+        border 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .task-card:hover {
+      transform: translateY(-2px);
+      border-color: #ffc4db;
+    }
+
+    .task-card.active {
+      border-color: var(--pink-main);
+      background: #fff7fa;
+    }
+
+    .task-card.done {
+      border-color: #ace0be;
+      background: #f5fff8;
+    }
+
+    .task-card.failed {
+      border-color: #f6bbc5;
+      background: #fff8f9;
+    }
+
+    .task-icon {
+      width: 55px;
+      height: 55px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background: var(--pink-card);
+      border-radius: 17px;
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+
+    .task-info {
+      flex: 1;
+    }
+
+    .task-info h3 {
+      color: var(--pink-deep);
+      font-size: 17px;
+      margin-bottom: 5px;
+    }
+
+    .task-time {
+      color: var(--pink-main);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .task-desc {
+      color: var(--muted);
+      margin-top: 5px;
+      font-size: 12px;
+    }
+
+    /* ---------- YES / NO ---------- */
+
+    .actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .choice-btn {
+      border: none;
+      padding: 10px 15px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .yes-btn {
+      background: #e1f7e8;
+      color: #257648;
+    }
+
+    .no-btn {
+      background: #ffe6ea;
+      color: #b63d54;
+    }
+
+    .yes-btn.selected {
+      color: white;
+      background: var(--green);
+    }
+
+    .no-btn.selected {
+      color: white;
+      background: var(--red);
+    }
+
+    /* ---------- REMINDER ---------- */
+
+    .notification-panel {
+      background: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      margin-top: 25px;
+      box-shadow: var(--shadow);
+    }
+
+    .notification-panel h3 {
+      margin-bottom: 5px;
+      color: var(--pink-dark);
+    }
+
+    .notification-panel p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 15px;
+    }
+
+    .main-button {
+      background: linear-gradient(
+        135deg,
+        var(--pink-main),
+        var(--pink-dark)
+      );
+
+      color: white;
+      border: none;
+      border-radius: 12px;
+
+      padding: 12px 19px;
+
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .main-button:hover {
+      opacity: 0.92;
+    }
+
+    /* ---------- SUMMARY ---------- */
+
+    .summary {
+      background: white;
+      margin-top: 25px;
+      padding: 25px;
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .summary-emoji {
+      font-size: 45px;
+    }
+
+    .summary h2 {
+      color: var(--pink-dark);
+      margin: 7px 0;
+    }
+
+    .summary-score {
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--pink-main);
+    }
+
+    .summary-message {
+      color: var(--muted);
+      margin: 6px 0 18px;
+    }
+
+    /* ---------- HISTORY ---------- */
+
+    .history {
+      margin-top: 25px;
+      background: white;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .history h2 {
+      color: var(--pink-dark);
+      margin-bottom: 15px;
+    }
+
+    .history-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .history-item {
+      background: #fff4f8;
+      padding: 12px 15px;
+      border-radius: 12px;
+
+      display: flex;
+      justify-content: space-between;
+
+      font-size: 14px;
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      margin-top: 30px;
+      font-size: 13px;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+
+    @media (max-width: 800px) {
+      .dashboard {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .task-card {
+        flex-wrap: wrap;
+      }
+
+      .actions {
+        width: 100%;
+      }
+
+      .choice-btn {
+        flex: 1;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .container {
+        width: 94%;
+      }
+
+      .dashboard {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .stat-card {
+        padding: 15px 10px;
+      }
+
+      .task-card {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Cute stickers -->
+
+  <div class="sticker sticker-1">🌸</div>
+  <div class="sticker sticker-2">🎀</div>
+  <div class="sticker sticker-3">🧸</div>
+  <div class="sticker sticker-4">💗</div>
+
+  <div class="container">
+
+    <!-- HEADER -->
+
+    <header>
+      <h1>🎀 My Daily Routine</h1>
+
+      <p class="subtitle">
+        Small progress every day becomes a big result 💗
+      </p>
+
+      <div class="date" id="todayDate"></div>
+    </header>
+
+
+    <!-- DASHBOARD -->
+
+    <section class="dashboard">
+
+      <div class="stat-card">
+        <div class="icon">💗</div>
+        <h3 id="scoreDisplay">0%</h3>
+        <p>Today's Score</p>
+      </div>
+
+      <div class="stat-card">
+        <div class="icon">✅</div>
+        <h3 id="completedDisplay">0/7</h3>
+        <p>Completed</p>
+      </div>
+
+      <div class="stat-card">
+        <div class="icon">🔥</div>
+        <h3 id="streakDisplay">0</h3>
+        <p>Day Streak</p>
+      </div>
+
+      <div class="stat-card">
+        <div class="icon">🏆</div>
+        <h3 id="bestDisplay">0%</h3>
+        <p>Best Score</p>
+      </div>
+
+    </section>
+
+
+    <!-- PROGRESS -->
+
+    <section class="progress-section">
+
+      <div class="progress-header">
+        <span>Today's Progress 🌷</span>
+        <span id="progressText">0%</span>
+      </div>
+
+      <div class="progress-wrapper">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+    </section>
+
+
+    <!-- CURRENT TASK -->
+
+    <section class="current-card">
+
+      <small>✨ Current / Next Activity</small>
+
+      <h2 id="currentTask">
+        Loading your schedule...
+      </h2>
+
+      <div id="countdown"></div>
+
+    </section>
+
+
+    <h2 class="section-title">
+      🌸 Today's Timetable
+    </h2>
+
+
+    <!-- TASKS -->
+
+    <section class="tasks" id="taskContainer"></section>
+
+
+    <!-- NOTIFICATION -->
+
+    <section class="notification-panel">
+
+      <h3>🔔 Routine Reminders</h3>
+
+      <p>
+        Turn notifications on to receive reminders
+        5 minutes before your important routine tasks.
+      </p>
+
+      <button
+        class="main-button"
+        onclick="enableNotifications()"
+        id="notificationButton"
+      >
+        🔔 Enable Reminders
+      </button>
+
+    </section>
+
+
+    <!-- DAILY SUMMARY -->
+
+    <section class="summary">
+
+      <div
+        class="summary-emoji"
+        id="summaryEmoji"
+      >
+        🌷
+      </div>
+
+      <h2>Today's Result</h2>
+
+      <div
+        class="summary-score"
+        id="summaryScore"
+      >
+        0 / 100
+      </div>
+
+      <p
+        class="summary-message"
+        id="summaryMessage"
+      >
+        Complete your tasks and make today productive 💗
+      </p>
+
+      <button
+        class="main-button"
+        onclick="confirmReset()"
+      >
+        🔄 Reset Today
+      </button>
+
+    </section>
+
+
+    <!-- HISTORY -->
+
+    <section class="history">
+
+      <h2>📅 Recent Progress</h2>
+
+      <div
+        class="history-list"
+        id="historyList"
+      ></div>
+
+    </section>
+
+
+    <footer>
+      Made with 💗 for consistency, discipline & growth.
+    </footer>
+
+  </div>
+
+
+<script>
+
+  /* ============================================
+     DAILY ROUTINE
+  ============================================ */
+
+  const tasks = [
+
+    {
+      id: "wake",
+      icon: "🌞",
+      title: "Wake Up",
+      time: "8:00 AM",
+      description: "Start your day with positive energy.",
+      start: "08:00",
+      end: "08:05"
+    },
+
+    {
+      id: "daily",
+      icon: "🛁",
+      title: "Daily Necessary Work",
+      time: "8:00 AM – 10:00 AM",
+      description:
+        "Freshen up, breakfast and complete your morning routine.",
+      start: "08:00",
+      end: "10:00"
+    },
+
+    {
+      id: "questions",
+      icon: "📚",
+      title: "Important Question Practice",
+      time: "10:00 AM – 1:00 PM",
+      description:
+        "Practice important university/exam questions.",
+      start: "10:00",
+      end: "13:00"
+    },
+
+    {
+      id: "lunch",
+      icon: "🍱",
+      title: "Lunch & Rest",
+      time: "1:00 PM – 2:00 PM",
+      description:
+        "Eat properly and take a short mental break.",
+      start: "13:00",
+      end: "14:00"
+    },
+
+    {
+      id: "cloud",
+      icon: "☁️",
+      title: "Cloud Computing",
+      time: "2:00 PM – 6:00 PM",
+      description:
+        "Cloud class, Linux, AWS, Networking, DevOps or important topics.",
+      start: "14:00",
+      end: "18:00"
+    },
+
+    {
+      id: "personal",
+      icon: "📞",
+      title: "Calls, Dinner & Personal Time",
+      time: "6:00 PM – 10:00 PM",
+      description:
+        "Calls, friends/family, dinner and personal work.",
+      start: "18:00",
+      end: "22:00"
+    },
+
+    {
+      id: "skills",
+      icon: "💻",
+      title: "Skill Development",
+      time: "10:00 PM – 2:00 AM",
+      description:
+        "Coding, projects, Cloud/DevOps, Linux, GitHub or career skills.",
+      start: "22:00",
+      end: "26:00"
+    }
+
+  ];
+
+
+  /* ============================================
+     ROUTINE DAY
+
+     Because your routine finishes at 2 AM,
+     midnight should NOT start a new routine.
+
+     Until 3 AM we consider the previous date
+     to be the active routine date.
+  ============================================ */
+
+  function getRoutineDate() {
+
+    const now = new Date();
+
+    const routineDate = new Date(now);
+
+    if (now.getHours() < 3) {
+      routineDate.setDate(
+        routineDate.getDate() - 1
+      );
+    }
+
+    return routineDate
+      .toISOString()
+      .split("T")[0];
+  }
+
+
+  const routineDate = getRoutineDate();
+
+
+  /* ============================================
+     STORAGE
+  ============================================ */
+
+  const storageKey =
+    "routine-" + routineDate;
+
+
+  let taskStatus =
+    JSON.parse(
+      localStorage.getItem(storageKey)
+    ) || {};
+
+
+  function saveData() {
+
+    localStorage.setItem(
+      storageKey,
+      JSON.stringify(taskStatus)
+    );
+
+    saveHistory();
+  }
+
+
+  /* ============================================
+     DATE
+  ============================================ */
+
+  function showDate() {
+
+    const date = new Date();
+
+    document.getElementById(
+      "todayDate"
+    ).textContent =
+      date.toLocaleDateString(
+        "en-IN",
+        {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+          year: "numeric"
+        }
+      );
+  }
+
+
+  /* ============================================
+     RENDER TASKS
+  ============================================ */
+
+  function renderTasks() {
+
+    const container =
+      document.getElementById(
+        "taskContainer"
+      );
+
+    container.innerHTML = "";
+
+
+    tasks.forEach(task => {
+
+      const status =
+        taskStatus[task.id];
+
+
+      const card =
+        document.createElement("div");
+
+
+      card.className =
+        "task-card " +
+        (
+          status === "yes"
+            ? "done"
+            : status === "no"
+            ? "failed"
+            : ""
+        );
+
+
+      card.id =
+        "card-" + task.id;
+
+
+      card.innerHTML = `
+
+        <div class="task-icon">
+          ${task.icon}
+        </div>
+
+        <div class="task-info">
+
+          <h3>
+            ${task.title}
+          </h3>
+
+          <div class="task-time">
+            ⏰ ${task.time}
+          </div>
+
+          <div class="task-desc">
+            ${task.description}
+          </div>
+
+        </div>
+
+        <div class="actions">
+
+          <button
+            class="choice-btn yes-btn
+            ${status === "yes"
+              ? "selected"
+              : ""}"
+            onclick="setStatus(
+              '${task.id}',
+              'yes'
+            )"
+          >
+            ✓ Yes
+          </button>
+
+          <button
+            class="choice-btn no-btn
+            ${status === "no"
+              ? "selected"
+              : ""}"
+            onclick="setStatus(
+              '${task.id}',
+              'no'
+            )"
+          >
+            ✕ No
+          </button>
+
+        </div>
+
+      `;
+
+
+      container.appendChild(card);
+
+    });
+
+  }
+
+
+  /* ============================================
+     UPDATE STATUS
+  ============================================ */
+
+  function setStatus(
+    taskId,
+    status
+  ) {
+
+    taskStatus[taskId] =
+      status;
+
+    saveData();
+
+    renderTasks();
+
+    updateDashboard();
+
+    updateCurrentTask();
+  }
+
+
+  /* ============================================
+     SCORE
+  ============================================ */
+
+  function calculateScore() {
+
+    const completed =
+      tasks.filter(
+        task =>
+          taskStatus[task.id]
+          === "yes"
+      ).length;
+
+
+    const score =
+      Math.round(
+        (completed / tasks.length)
+        * 100
+      );
+
+
+    return {
+      completed,
+      score
+    };
+  }
+
+
+  function updateDashboard() {
+
+    const {
+      completed,
+      score
+    } = calculateScore();
+
+
+    document.getElementById(
+      "scoreDisplay"
+    ).textContent =
+      score + "%";
+
+
+    document.getElementById(
+      "completedDisplay"
+    ).textContent =
+      completed +
+      "/" +
+      tasks.length;
+
+
+    document.getElementById(
+      "progressText"
+    ).textContent =
+      score + "%";
+
+
+    document.getElementById(
+      "progressBar"
+    ).style.width =
+      score + "%";
+
+
+    document.getElementById(
+      "summaryScore"
+    ).textContent =
+      score + " / 100";
+
+
+    updateSummary(score);
+
+    updateHistoryDisplay();
+  }
+
+
+  /* ============================================
+     MOTIVATIONAL MESSAGE
+  ============================================ */
+
+  function updateSummary(score) {
+
+    const message =
+      document.getElementById(
+        "summaryMessage"
+      );
+
+    const emoji =
+      document.getElementById(
+        "summaryEmoji"
+      );
+
+
+    if (score >= 90) {
+
+      emoji.textContent = "👑";
+
+      message.textContent =
+        "Amazing! You crushed your day. Keep this discipline alive! 🔥";
+
+    }
+
+    else if (score >= 75) {
+
+      emoji.textContent = "🌟";
+
+      message.textContent =
+        "Great work! You had a very productive day. 💗";
+
+    }
+
+    else if (score >= 50) {
+
+      emoji.textContent = "🌷";
+
+      message.textContent =
+        "Good effort! Try to improve a little more tomorrow.";
+
+    }
+
+    else if (score > 0) {
+
+      emoji.textContent = "💗";
+
+      message.textContent =
+        "Some progress is better than no progress. Keep going!";
+
+    }
+
+    else {
+
+      emoji.textContent = "🎀";
+
+      message.textContent =
+        "Your productive day is waiting for you. Start with one task!";
+
+    }
+
+  }
+
+
+  /* ============================================
+     TIME CONVERSION
+  ============================================ */
+
+  function getDecimalHour() {
+
+    const now =
+      new Date();
+
+    let hour =
+      now.getHours();
+
+    /*
+      Between midnight and 3 AM
+      treat time as 24–27.
+    */
+
+    if (hour < 3) {
+      hour += 24;
+    }
+
+    return (
+      hour +
+      now.getMinutes() / 60 +
+      now.getSeconds() / 3600
+    );
+
+  }
+
+
+  /* ============================================
+     CURRENT / NEXT TASK
+  ============================================ */
+
+  function updateCurrentTask() {
+
+    const currentHour =
+      getDecimalHour();
+
+
+    let activeTask = null;
+    let nextTask = null;
+
+
+    for (let task of tasks) {
+
+      const start =
+        parseFloat(
+          task.start.replace(
+            ":",
+            "."
+          )
+        );
+
+      const partsStart =
+        task.start.split(":");
+
+      const realStart =
+        Number(partsStart[0]) +
+        Number(partsStart[1]) / 60;
+
+
+      const partsEnd =
+        task.end.split(":");
+
+      const realEnd =
+        Number(partsEnd[0]) +
+        Number(partsEnd[1]) / 60;
+
+
+      if (
+        currentHour >= realStart &&
+        currentHour < realEnd
+      ) {
+
+        activeTask = task;
+        break;
+
+      }
+
+      if (
+        currentHour < realStart &&
+        !nextTask
+      ) {
+
+        nextTask = task;
+
+      }
+
+    }
+
+
+    document
+      .querySelectorAll(
+        ".task-card"
+      )
+      .forEach(
+        card =>
+          card.classList.remove(
+            "active"
+          )
+      );
+
+
+    const display =
+      document.getElementById(
+        "currentTask"
+      );
+
+
+    const countdown =
+      document.getElementById(
+        "countdown"
+      );
+
+
+    if (activeTask) {
+
+      display.textContent =
+        activeTask.icon +
+        " " +
+        activeTask.title;
+
+
+      const card =
+        document.getElementById(
+          "card-" +
+          activeTask.id
+        );
+
+
+      if (card) {
+        card.classList.add(
+          "active"
+        );
+      }
+
+
+      countdown.textContent =
+        "You should be working on this now 💗";
+
+    }
+
+    else if (nextTask) {
+
+      display.textContent =
+        "Next: " +
+        nextTask.icon +
+        " " +
+        nextTask.title;
+
+
+      countdown.textContent =
+        "Get ready for your next productive session ✨";
+
+    }
+
+    else {
+
+      display.textContent =
+        "🌙 Routine Completed";
+
+      countdown.textContent =
+        "Review your score and sleep peacefully. Great job! 💗";
+
+    }
+
+  }
+
+
+  /* ============================================
+     NOTIFICATIONS
+  ============================================ */
+
+  async function enableNotifications() {
+
+    if (
+      !("Notification" in window)
+    ) {
+
+      alert(
+        "Your browser does not support notifications."
+      );
+
+      return;
+    }
+
+
+    const permission =
+      await Notification.requestPermission();
+
+
+    if (
+      permission === "granted"
+    ) {
+
+      document.getElementById(
+        "notificationButton"
+      ).textContent =
+        "✅ Reminders Enabled";
+
+
+      new Notification(
+        "🎀 Daily Routine",
+        {
+          body:
+            "Your productivity reminders are enabled! 💗"
+        }
+      );
+
+
+      scheduleReminders();
+
+    }
+
+    else {
+
+      alert(
+        "Please allow notifications from your browser settings."
+      );
+
+    }
+
+  }
+
+
+  /* ============================================
+     REMINDER CHECK
+
+     Checks every 30 seconds.
+     This is more reliable than only using
+     long setTimeout timers.
+  ============================================ */
+
+  function reminderKey(
+    taskId,
+    type
+  ) {
+
+    return (
+      "reminder-" +
+      routineDate +
+      "-" +
+      taskId +
+      "-" +
+      type
+    );
+
+  }
+
+
+  function sendReminder(
+    task,
+    type
+  ) {
+
+    if (
+      Notification.permission !==
+      "granted"
+    ) {
+      return;
+    }
+
+
+    const key =
+      reminderKey(
+        task.id,
+        type
+      );
+
+
+    if (
+      localStorage.getItem(key)
+    ) {
+      return;
+    }
+
+
+    let body;
+
+
+    if (type === "before") {
+
+      body =
+        `${task.title} starts in 5 minutes. Get ready! 🌸`;
+
+    }
+
+    else {
+
+      body =
+        `It's time for ${task.title}. Let's make progress! 💗`;
+
+    }
+
+
+    new Notification(
+      task.icon +
+      " " +
+      task.title,
+      {
+        body
+      }
+    );
+
+
+    localStorage.setItem(
+      key,
+      "sent"
+    );
+
+  }
+
+
+  function scheduleReminders() {
+
+    checkReminders();
+
+    setInterval(
+      checkReminders,
+      30000
+    );
+
+  }
+
+
+  function checkReminders() {
+
+    if (
+      Notification.permission !==
+      "granted"
+    ) {
+      return;
+    }
+
+
+    const now =
+      new Date();
+
+
+    let currentMinutes =
+      now.getHours() * 60 +
+      now.getMinutes();
+
+
+    /*
+      Treat after midnight as next
+      part of previous routine.
+    */
+
+    if (
+      now.getHours() < 3
+    ) {
+
+      currentMinutes +=
+        24 * 60;
+
+    }
+
+
+    tasks.forEach(task => {
+
+      const parts =
+        task.start.split(":");
+
+
+      const startMinutes =
+        Number(parts[0]) * 60 +
+        Number(parts[1]);
+
+
+      const beforeMinutes =
+        startMinutes - 5;
+
+
+      if (
+        currentMinutes ===
+        beforeMinutes
+      ) {
+
+        sendReminder(
+          task,
+          "before"
+        );
+
+      }
+
+
+      if (
+        currentMinutes ===
+        startMinutes
+      ) {
+
+        sendReminder(
+          task,
+          "start"
+        );
+
+      }
+
+    });
+
+  }
+
+
+  /* ============================================
+     HISTORY
+  ============================================ */
+
+  function saveHistory() {
+
+    let history =
+      JSON.parse(
+        localStorage.getItem(
+          "routineHistory"
+        )
+      ) || {};
+
+
+    const result =
+      calculateScore();
+
+
+    history[routineDate] = {
+      score:
+        result.score,
+
+      completed:
+        result.completed
+    };
+
+
+    localStorage.setItem(
+      "routineHistory",
+      JSON.stringify(history)
+    );
+
+  }
+
+
+  function updateHistoryDisplay() {
+
+    const history =
+      JSON.parse(
+        localStorage.getItem(
+          "routineHistory"
+        )
+      ) || {};
+
+
+    const historyContainer =
+      document.getElementById(
+        "historyList"
+      );
+
+
+    const entries =
+      Object.entries(history)
+        .sort(
+          (a, b) =>
+            new Date(b[0]) -
+            new Date(a[0])
+        )
+        .slice(0, 7);
+
+
+    if (
+      entries.length === 0
+    ) {
+
+      historyContainer.innerHTML =
+        `
+        <div class="history-item">
+          <span>🌸 Complete today's routine to start your history.</span>
+        </div>
+        `;
+
+      return;
+
+    }
+
+
+    historyContainer.innerHTML = "";
+
+
+    entries.forEach(
+      ([date, data]) => {
+
+        const formattedDate =
+          new Date(
+            date +
+            "T12:00:00"
+          ).toLocaleDateString(
+            "en-IN",
+            {
+              day: "numeric",
+              month: "short"
+            }
+          );
+
+
+        const item =
+          document.createElement(
+            "div"
+          );
+
+
+        item.className =
+          "history-item";
+
+
+        item.innerHTML =
+          `
+            <span>
+              📅 ${formattedDate}
+            </span>
+
+            <strong>
+              ${data.score}%
+            </strong>
+          `;
+
+
+        historyContainer.appendChild(
+          item
+        );
+
+      }
+    );
+
+
+    updateStats(history);
+
+  }
+
+
+  /* ============================================
+     STREAK & BEST SCORE
+  ============================================ */
+
+  function updateStats(history) {
+
+    const scores =
+      Object.values(history)
+        .map(item => item.score);
+
+
+    const best =
+      scores.length
+        ? Math.max(...scores)
+        : 0;
+
+
+    document.getElementById(
+      "bestDisplay"
+    ).textContent =
+      best + "%";
+
+
+    let streak = 0;
+
+
+    const dates =
+      Object.keys(history)
+        .sort(
+          (a, b) =>
+            new Date(b) -
+            new Date(a)
+        );
+
+
+    for (let date of dates) {
+
+      /*
+        Score of 70% or above
+        counts as a successful day.
+      */
+
+      if (
+        history[date].score >= 70
+      ) {
+
+        streak++;
+
+      }
+
+      else {
+
+        break;
+
+      }
+
+    }
+
+
+    document.getElementById(
+      "streakDisplay"
+    ).textContent =
+      streak;
+
+  }
+
+
+  /* ============================================
+     RESET
+  ============================================ */
+
+  function confirmReset() {
+
+    const confirmed =
+      confirm(
+        "Are you sure you want to reset today's routine?"
+      );
+
+
+    if (!confirmed) {
+      return;
+    }
+
+
+    taskStatus = {};
+
+
+    localStorage.removeItem(
+      storageKey
+    );
+
+
+    renderTasks();
+    updateDashboard();
+    updateCurrentTask();
+
+  }
+
+
+  /* ============================================
+     INITIALIZE
+  ============================================ */
+
+  function initialize() {
+
+    showDate();
+
+    renderTasks();
+
+    updateDashboard();
+
+    updateCurrentTask();
+
+
+    if (
+      Notification.permission ===
+      "granted"
+    ) {
+
+      document.getElementById(
+        "notificationButton"
+      ).textContent =
+        "✅ Reminders Enabled";
+
+
+      scheduleReminders();
+
+    }
+
+
+    /*
+      Refresh current activity every minute.
+    */
+
+    setInterval(
+      updateCurrentTask,
+      60000
+    );
+
+  }
+
+
+  initialize();
+
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>My Daily Routine 💗</title>
+
+  <style>
+    :root {
+      --pink-light: #fff1f6;
+      --pink-card: #ffe3ed;
+      --pink-medium: #ff8fbd;
+      --pink-main: #ff5fa2;
+      --pink-dark: #c2185b;
+      --pink-deep: #8e164d;
+
+      --green: #43a86b;
+      --red: #e45f74;
+
+      --white: #ffffff;
+      --text: #522239;
+      --muted: #92677b;
+
+      --shadow: 0 12px 30px rgba(194, 24, 91, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background:
+        radial-gradient(circle at 10% 10%, #ffd4e6 0, transparent 25%),
+        radial-gradient(circle at 90% 20%, #ffe4f0 0, transparent 23%),
+        linear-gradient(135deg, #fff5f9, #ffe8f1);
+
+      min-height: 100vh;
+      color: var(--text);
+      padding-bottom: 50px;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    /* ---------- FLOATING STICKERS ---------- */
+
+    .sticker {
+      position: fixed;
+      font-size: 34px;
+      z-index: -1;
+      opacity: 0.35;
+      animation: floatSticker 5s ease-in-out infinite;
+    }
+
+    .sticker-1 {
+      top: 9%;
+      left: 3%;
+    }
+
+    .sticker-2 {
+      top: 24%;
+      right: 4%;
+      animation-delay: 1s;
+    }
+
+    .sticker-3 {
+      bottom: 15%;
+      left: 4%;
+      animation-delay: 2s;
+    }
+
+    .sticker-4 {
+      bottom: 8%;
+      right: 5%;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes floatSticker {
+      0%,
+      100% {
+        transform: translateY(0) rotate(-3deg);
+      }
+
+      50% {
+        transform: translateY(-12px) rotate(5deg);
+      }
+    }
+
+    /* ---------- MAIN ---------- */
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    /* ---------- HEADER ---------- */
+
+    header {
+      padding: 38px 0 22px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: clamp(30px, 5vw, 48px);
+      color: var(--pink-dark);
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .date {
+      display: inline-block;
+      background: white;
+      margin-top: 15px;
+      padding: 8px 18px;
+      border-radius: 100px;
+      box-shadow: var(--shadow);
+      color: var(--pink-dark);
+      font-weight: 700;
+    }
+
+    /* ---------- DASHBOARD ---------- */
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid #ffd2e3;
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-card .icon {
+      font-size: 27px;
+      margin-bottom: 5px;
+    }
+
+    .stat-card h3 {
+      font-size: 24px;
+      color: var(--pink-dark);
+    }
+
+    .stat-card p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ---------- PROGRESS ---------- */
+
+    .progress-section {
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .progress-wrapper {
+      height: 18px;
+      background: #ffe2ed;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      border-radius: 20px;
+      background: linear-gradient(
+        90deg,
+        var(--pink-main),
+        var(--pink-dark)
+      );
+
+      transition: width 0.5s ease;
+    }
+
+    /* ---------- CURRENT TASK ---------- */
+
+    .current-card {
+      background:
+        linear-gradient(
+          135deg,
+          var(--pink-dark),
+          var(--pink-main)
+        );
+
+      color: white;
+      border-radius: 22px;
+      padding: 22px;
+      margin-bottom: 22px;
+      box-shadow: 0 15px 35px rgba(194, 24, 91, 0.25);
+    }
+
+    .current-card small {
+      opacity: 0.85;
+    }
+
+    .current-card h2 {
+      margin: 7px 0;
+      font-size: 22px;
+    }
+
+    #countdown {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    /* ---------- TASK CARD ---------- */
+
+    .section-title {
+      margin: 30px 0 15px;
+      color: var(--pink-dark);
+      font-size: 24px;
+    }
+
+    .tasks {
+      display: grid;
+      gap: 15px;
+    }
+
+    .task-card {
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid transparent;
+      border-radius: 22px;
+      padding: 18px 20px;
+
+      display: flex;
+      align-items: center;
+      gap: 17px;
+
+      box-shadow: var(--shadow);
+
+      transition:
+        transform 0.2s ease,
+        border 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .task-card:hover {
+      transform: translateY(-2px);
+      border-color: #ffc4db;
+    }
+
+    .task-card.active {
+      border-color: var(--pink-main);
+      background: #fff7fa;
+    }
+
+    .task-card.done {
+      border-color: #ace0be;
+      background: #f5fff8;
+    }
+
+    .task-card.failed {
+      border-color: #f6bbc5;
+      background: #fff8f9;
+    }
+
+    .task-icon {
+      width: 55px;
+      height: 55px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background: var(--pink-card);
+      border-radius: 17px;
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+
+    .task-info {
+      flex: 1;
+    }
+
+    .task-info h3 {
+      color: var(--pink-deep);
+      font-size: 17px;
+      margin-bottom: 5px;
+    }
+
+    .task-time {
+      color: var(--pink-main);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .task-desc {
+      color: var(--muted);
+      margin-top: 5px;
+      font-size: 12px;
+    }
+
+    /* ---------- YES / NO ---------- */
+
+    .actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .choice-btn {
+      border: none;
+      padding: 10px 15px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .yes-btn {
+      background: #e1f7e8;
+      color: #257648;
+    }
+
+    .no-btn {
+      background: #ffe6ea;
+      color: #b63d54;
+    }
+
+    .yes-btn.selected {
+      color: white;
+      background: var(--green);
+    }
+
+    .no-btn.selected {
+      color: white;
+      background: var(--red);
+    }
+
+    /* ---------- REMINDER ---------- */
+
+    .notification-panel {
+      background: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      margin-top: 25px;
+      box-shadow: var(--shadow);
+    }
+
+    .notification-panel h3 {
+      margin-bottom: 5px;
+      color: var(--pink-dark);
+    }
+
+    .notification-panel p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 15px;
+    }
+
+    .main-button {
+      background: linear-gradient(
+        135deg,
+        var(--pink-main),
+        var(--pink-dark)
+      );
+
+      color: white;
+      border: none;
+      border-radius: 12px;
+
+      padding: 12px 19px;
+
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .main-button:hover {
+      opacity: 0.92;
+    }
+
+    /* ---------- SUMMARY ---------- */
+
+    .summary {
+      background: white;
+      margin-top: 25px;
+      padding: 25px;
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .summary-emoji {
+      font-size: 45px;
+    }
+
+    .summary h2 {
+      color: var(--pink-dark);
+      margin: 7px 0;
+    }
+
+    .summary-score {
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--pink-main);
+    }
+
+    .summary-message {
+      color: var(--muted);
+      margin: 6px 0 18px;
+    }
+
+    /* ---------- HISTORY ---------- */
+
+    .history {
+      margin-top: 25px;
+      background: white;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .history h2 {
+      color: var(--pink-dark);
+      margin-bottom: 15px;
+    }
+
+    .history-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .history-item {
+      background: #fff4f8;
+      padding: 12px 15px;
+      border-radius: 12px;
+
+      display: flex;
+      justify-content: space-between;
+
+      font-size: 14px;
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      margin-top: 30px;
+      font-size: 13px;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+
+    @media (max-width: 800px) {
+      .dashboard {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .task-card {
+        flex-wrap: wrap;
+      }
+
+      .actions {
+        width: 100%;
+      }
+
+      .choice-btn {
+        flex: 1;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .container {
+        width: 94%;
+      }
+
+      .dashboard {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .stat-card {
+        padding: 15px 10px;
+      }
+
+      .task-card {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Cute stickers -->
+
+  <div class="sticker sticker-1">🌸</div>
+  <div class="sticker sticker-2">🎀</div>
+  <div class="sticker sticker-3">🧸</div>
+  <div class="sticker sticker-4">💗</div>
+
+  <div class="container">
+
+    <!-- HEADER -->
+
+    <header>
+      <h1>🎀 My Daily Routine</h1>
+
+      <p class="subtitle">
+        Small progress every day becomes a big result 💗
+      </p>
+
+      <div class="date" id="todayDate"></div>
+    </header>
+
+
+    <!-- DASHBOARD -->
+
+    <section class="dashboard">
+
+      <div class="stat-card">
+        <div class="icon">💗</div>
+        <h3 id="scoreDisplay">0%</h3>
+        <p>Today's Score</p>
+      </div>
+
+      <div class="stat-card">
+        <div class="icon">✅</div>
+        <h3 id="completedDisplay">0/7</h3>
+        <p>Completed</p>
+      </div>
+
+      <div class="stat-card">
+        <div class="icon">🔥</div>
+        <h3 id="streakDisplay">0</h3>
+        <p>Day Streak</p>
+      </div>
+
+      <div class="stat-card">
+        <div class="icon">🏆</div>
+        <h3 id="bestDisplay">0%</h3>
+        <p>Best Score</p>
+      </div>
+
+    </section>
+
+
+    <!-- PROGRESS -->
+
+    <section class="progress-section">
+
+      <div class="progress-header">
+        <span>Today's Progress 🌷</span>
+        <span id="progressText">0%</span>
+      </div>
+
+      <div class="progress-wrapper">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+    </section>
+
+
+    <!-- CURRENT TASK -->
+
+    <section class="current-card">
+
+      <small>✨ Current / Next Activity</small>
+
+      <h2 id="currentTask">
+        Loading your schedule...
+      </h2>
+
+      <div id="countdown"></div>
+
+    </section>
+
+
+    <h2 class="section-title">
+      🌸 Today's Timetable
+    </h2>
+
+
+    <!-- TASKS -->
+
+    <section class="tasks" id="taskContainer"></section>
+
+
+    <!-- NOTIFICATION -->
+
+    <section class="notification-panel">
+
+      <h3>🔔 Routine Reminders</h3>
+
+      <p>
+        Turn notifications on to receive reminders
+        5 minutes before your important routine tasks.
+      </p>
+
+      <button
+        class="main-button"
+        onclick="enableNotifications()"
+        id="notificationButton"
+      >
+        🔔 Enable Reminders
+      </button>
+
+    </section>
+
+
+    <!-- DAILY SUMMARY -->
+
+    <section class="summary">
+
+      <div
+        class="summary-emoji"
+        id="summaryEmoji"
+      >
+        🌷
+      </div>
+
+      <h2>Today's Result</h2>
+
+      <div
+        class="summary-score"
+        id="summaryScore"
+      >
+        0 / 100
+      </div>
+
+      <p
+        class="summary-message"
+        id="summaryMessage"
+      >
+        Complete your tasks and make today productive 💗
+      </p>
+
+      <button
+        class="main-button"
+        onclick="confirmReset()"
+      >
+        🔄 Reset Today
+      </button>
+
+    </section>
+
+
+    <!-- HISTORY -->
+
+    <section class="history">
+
+      <h2>📅 Recent Progress</h2>
+
+      <div
+        class="history-list"
+        id="historyList"
+      ></div>
+
+    </section>
+
+
+    <footer>
+      Made with 💗 for consistency, discipline & growth.
+    </footer>
+
+  </div>
+
+
+<script>
+
+  /* ============================================
+     DAILY ROUTINE
+  ============================================ */
+
+  const tasks = [
+
+    {
+      id: "wake",
+      icon: "🌞",
+      title: "Wake Up",
+      time: "8:00 AM",
+      description: "Start your day with positive energy.",
+      start: "08:00",
+      end: "08:05"
+    },
+
+    {
+      id: "daily",
+      icon: "🛁",
+      title: "Daily Necessary Work",
+      time: "8:00 AM – 10:00 AM",
+      description:
+        "Freshen up, breakfast and complete your morning routine.",
+      start: "08:00",
+      end: "10:00"
+    },
+
+    {
+      id: "questions",
+      icon: "📚",
+      title: "Important Question Practice",
+      time: "10:00 AM – 1:00 PM",
+      description:
+        "Practice important university/exam questions.",
+      start: "10:00",
+      end: "13:00"
+    },
+
+    {
+      id: "lunch",
+      icon: "🍱",
+      title: "Lunch & Rest",
+      time: "1:00 PM – 2:00 PM",
+      description:
+        "Eat properly and take a short mental break.",
+      start: "13:00",
+      end: "14:00"
+    },
+
+    {
+      id: "cloud",
+      icon: "☁️",
+      title: "Cloud Computing",
+      time: "2:00 PM – 6:00 PM",
+      description:
+        "Cloud class, Linux, AWS, Networking, DevOps or important topics.",
+      start: "14:00",
+      end: "18:00"
+    },
+
+    {
+      id: "personal",
+      icon: "📞",
+      title: "Calls, Dinner & Personal Time",
+      time: "6:00 PM – 10:00 PM",
+      description:
+        "Calls, friends/family, dinner and personal work.",
+      start: "18:00",
+      end: "22:00"
+    },
+
+    {
+      id: "skills",
+      icon: "💻",
+      title: "Skill Development",
+      time: "10:00 PM – 2:00 AM",
+      description:
+        "Coding, projects, Cloud/DevOps, Linux, GitHub or career skills.",
+      start: "22:00",
+      end: "26:00"
+    }
+
+  ];
+
+
+  /* ============================================
+     ROUTINE DAY
+
+     Because your routine finishes at 2 AM,
+     midnight should NOT start a new routine.
+
+     Until 3 AM we consider the previous date
+     to be the active routine date.
+  ============================================ */
+
+  function getRoutineDate() {
+
+    const now = new Date();
+
+    const routineDate = new Date(now);
+
+    if (now.getHours() < 3) {
+      routineDate.setDate(
+        routineDate.getDate() - 1
+      );
+    }
+
+    return routineDate
+      .toISOString()
+      .split("T")[0];
+  }
+
+
+  const routineDate = getRoutineDate();
+
+
+  /* ============================================
+     STORAGE
+  ============================================ */
+
+  const storageKey =
+    "routine-" + routineDate;
+
+
+  let taskStatus =
+    JSON.parse(
+      localStorage.getItem(storageKey)
+    ) || {};
+
+
+  function saveData() {
+
+    localStorage.setItem(
+      storageKey,
+      JSON.stringify(taskStatus)
+    );
+
+    saveHistory();
+  }
+
+
+  /* ============================================
+     DATE
+  ============================================ */
+
+  function showDate() {
+
+    const date = new Date();
+
+    document.getElementById(
+      "todayDate"
+    ).textContent =
+      date.toLocaleDateString(
+        "en-IN",
+        {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+          year: "numeric"
+        }
+      );
+  }
+
+
+  /* ============================================
+     RENDER TASKS
+  ============================================ */
+
+  function renderTasks() {
+
+    const container =
+      document.getElementById(
+        "taskContainer"
+      );
+
+    container.innerHTML = "";
+
+
+    tasks.forEach(task => {
+
+      const status =
+        taskStatus[task.id];
+
+
+      const card =
+        document.createElement("div");
+
+
+      card.className =
+        "task-card " +
+        (
+          status === "yes"
+            ? "done"
+            : status === "no"
+            ? "failed"
+            : ""
+        );
+
+
+      card.id =
+        "card-" + task.id;
+
+
+      card.innerHTML = `
+
+        <div class="task-icon">
+          ${task.icon}
+        </div>
+
+        <div class="task-info">
+
+          <h3>
+            ${task.title}
+          </h3>
+
+          <div class="task-time">
+            ⏰ ${task.time}
+          </div>
+
+          <div class="task-desc">
+            ${task.description}
+          </div>
+
+        </div>
+
+        <div class="actions">
+
+          <button
+            class="choice-btn yes-btn
+            ${status === "yes"
+              ? "selected"
+              : ""}"
+            onclick="setStatus(
+              '${task.id}',
+              'yes'
+            )"
+          >
+            ✓ Yes
+          </button>
+
+          <button
+            class="choice-btn no-btn
+            ${status === "no"
+              ? "selected"
+              : ""}"
+            onclick="setStatus(
+              '${task.id}',
+              'no'
+            )"
+          >
+            ✕ No
+          </button>
+
+        </div>
+
+      `;
+
+
+      container.appendChild(card);
+
+    });
+
+  }
+
+
+  /* ============================================
+     UPDATE STATUS
+  ============================================ */
+
+  function setStatus(
+    taskId,
+    status
+  ) {
+
+    taskStatus[taskId] =
+      status;
+
+    saveData();
+
+    renderTasks();
+
+    updateDashboard();
+
+    updateCurrentTask();
+  }
+
+
+  /* ============================================
+     SCORE
+  ============================================ */
+
+  function calculateScore() {
+
+    const completed =
+      tasks.filter(
+        task =>
+          taskStatus[task.id]
+          === "yes"
+      ).length;
+
+
+    const score =
+      Math.round(
+        (completed / tasks.length)
+        * 100
+      );
+
+
+    return {
+      completed,
+      score
+    };
+  }
+
+
+  function updateDashboard() {
+
+    const {
+      completed,
+      score
+    } = calculateScore();
+
+
+    document.getElementById(
+      "scoreDisplay"
+    ).textContent =
+      score + "%";
+
+
+    document.getElementById(
+      "completedDisplay"
+    ).textContent =
+      completed +
+      "/" +
+      tasks.length;
+
+
+    document.getElementById(
+      "progressText"
+    ).textContent =
+      score + "%";
+
+
+    document.getElementById(
+      "progressBar"
+    ).style.width =
+      score + "%";
+
+
+    document.getElementById(
+      "summaryScore"
+    ).textContent =
+      score + " / 100";
+
+
+    updateSummary(score);
+
+    updateHistoryDisplay();
+  }
+
+
+  /* ============================================
+     MOTIVATIONAL MESSAGE
+  ============================================ */
+
+  function updateSummary(score) {
+
+    const message =
+      document.getElementById(
+        "summaryMessage"
+      );
+
+    const emoji =
+      document.getElementById(
+        "summaryEmoji"
+      );
+
+
+    if (score >= 90) {
+
+      emoji.textContent = "👑";
+
+      message.textContent =
+        "Amazing! You crushed your day. Keep this discipline alive! 🔥";
+
+    }
+
+    else if (score >= 75) {
+
+      emoji.textContent = "🌟";
+
+      message.textContent =
+        "Great work! You had a very productive day. 💗";
+
+    }
+
+    else if (score >= 50) {
+
+      emoji.textContent = "🌷";
+
+      message.textContent =
+        "Good effort! Try to improve a little more tomorrow.";
+
+    }
+
+    else if (score > 0) {
+
+      emoji.textContent = "💗";
+
+      message.textContent =
+        "Some progress is better than no progress. Keep going!";
+
+    }
+
+    else {
+
+      emoji.textContent = "🎀";
+
+      message.textContent =
+        "Your productive day is waiting for you. Start with one task!";
+
+    }
+
+  }
+
+
+  /* ============================================
+     TIME CONVERSION
+  ============================================ */
+
+  function getDecimalHour() {
+
+    const now =
+      new Date();
+
+    let hour =
+      now.getHours();
+
+    /*
+      Between midnight and 3 AM
+      treat time as 24–27.
+    */
+
+    if (hour < 3) {
+      hour += 24;
+    }
+
+    return (
+      hour +
+      now.getMinutes() / 60 +
+      now.getSeconds() / 3600
+    );
+
+  }
+
+
+  /* ============================================
+     CURRENT / NEXT TASK
+  ============================================ */
+
+  function updateCurrentTask() {
+
+    const currentHour =
+      getDecimalHour();
+
+
+    let activeTask = null;
+    let nextTask = null;
+
+
+    for (let task of tasks) {
+
+      const start =
+        parseFloat(
+          task.start.replace(
+            ":",
+            "."
+          )
+        );
+
+      const partsStart =
+        task.start.split(":");
+
+      const realStart =
+        Number(partsStart[0]) +
+        Number(partsStart[1]) / 60;
+
+
+      const partsEnd =
+        task.end.split(":");
+
+      const realEnd =
+        Number(partsEnd[0]) +
+        Number(partsEnd[1]) / 60;
+
+
+      if (
+        currentHour >= realStart &&
+        currentHour < realEnd
+      ) {
+
+        activeTask = task;
+        break;
+
+      }
+
+      if (
+        currentHour < realStart &&
+        !nextTask
+      ) {
+
+        nextTask = task;
+
+      }
+
+    }
+
+
+    document
+      .querySelectorAll(
+        ".task-card"
+      )
+      .forEach(
+        card =>
+          card.classList.remove(
+            "active"
+          )
+      );
+
+
+    const display =
+      document.getElementById(
+        "currentTask"
+      );
+
+
+    const countdown =
+      document.getElementById(
+        "countdown"
+      );
+
+
+    if (activeTask) {
+
+      display.textContent =
+        activeTask.icon +
+        " " +
+        activeTask.title;
+
+
+      const card =
+        document.getElementById(
+          "card-" +
+          activeTask.id
+        );
+
+
+      if (card) {
+        card.classList.add(
+          "active"
+        );
+      }
+
+
+      countdown.textContent =
+        "You should be working on this now 💗";
+
+    }
+
+    else if (nextTask) {
+
+      display.textContent =
+        "Next: " +
+        nextTask.icon +
+        " " +
+        nextTask.title;
+
+
+      countdown.textContent =
+        "Get ready for your next productive session ✨";
+
+    }
+
+    else {
+
+      display.textContent =
+        "🌙 Routine Completed";
+
+      countdown.textContent =
+        "Review your score and sleep peacefully. Great job! 💗";
+
+    }
+
+  }
+
+
+  /* ============================================
+     NOTIFICATIONS
+  ============================================ */
+
+  async function enableNotifications() {
+
+    if (
+      !("Notification" in window)
+    ) {
+
+      alert(
+        "Your browser does not support notifications."
+      );
+
+      return;
+    }
+
+
+    const permission =
+      await Notification.requestPermission();
+
+
+    if (
+      permission === "granted"
+    ) {
+
+      document.getElementById(
+        "notificationButton"
+      ).textContent =
+        "✅ Reminders Enabled";
+
+
+      new Notification(
+        "🎀 Daily Routine",
+        {
+          body:
+            "Your productivity reminders are enabled! 💗"
+        }
+      );
+
+
+      scheduleReminders();
+
+    }
+
+    else {
+
+      alert(
+        "Please allow notifications from your browser settings."
+      );
+
+    }
+
+  }
+
+
+  /* ============================================
+     REMINDER CHECK
+
+     Checks every 30 seconds.
+     This is more reliable than only using
+     long setTimeout timers.
+  ============================================ */
+
+  function reminderKey(
+    taskId,
+    type
+  ) {
+
+    return (
+      "reminder-" +
+      routineDate +
+      "-" +
+      taskId +
+      "-" +
+      type
+    );
+
+  }
+
+
+  function sendReminder(
+    task,
+    type
+  ) {
+
+    if (
+      Notification.permission !==
+      "granted"
+    ) {
+      return;
+    }
+
+
+    const key =
+      reminderKey(
+        task.id,
+        type
+      );
+
+
+    if (
+      localStorage.getItem(key)
+    ) {
+      return;
+    }
+
+
+    let body;
+
+
+    if (type === "before") {
+
+      body =
+        `${task.title} starts in 5 minutes. Get ready! 🌸`;
+
+    }
+
+    else {
+
+      body =
+        `It's time for ${task.title}. Let's make progress! 💗`;
+
+    }
+
+
+    new Notification(
+      task.icon +
+      " " +
+      task.title,
+      {
+        body
+      }
+    );
+
+
+    localStorage.setItem(
+      key,
+      "sent"
+    );
+
+  }
+
+
+  function scheduleReminders() {
+
+    checkReminders();
+
+    setInterval(
+      checkReminders,
+      30000
+    );
+
+  }
+
+
+  function checkReminders() {
+
+    if (
+      Notification.permission !==
+      "granted"
+    ) {
+      return;
+    }
+
+
+    const now =
+      new Date();
+
+
+    let currentMinutes =
+      now.getHours() * 60 +
+      now.getMinutes();
+
+
+    /*
+      Treat after midnight as next
+      part of previous routine.
+    */
+
+    if (
+      now.getHours() < 3
+    ) {
+
+      currentMinutes +=
+        24 * 60;
+
+    }
+
+
+    tasks.forEach(task => {
+
+      const parts =
+        task.start.split(":");
+
+
+      const startMinutes =
+        Number(parts[0]) * 60 +
+        Number(parts[1]);
+
+
+      const beforeMinutes =
+        startMinutes - 5;
+
+
+      if (
+        currentMinutes ===
+        beforeMinutes
+      ) {
+
+        sendReminder(
+          task,
+          "before"
+        );
+
+      }
+
+
+      if (
+        currentMinutes ===
+        startMinutes
+      ) {
+
+        sendReminder(
+          task,
+          "start"
+        );
+
+      }
+
+    });
+
+  }
+
+
+  /* ============================================
+     HISTORY
+  ============================================ */
+
+  function saveHistory() {
+
+    let history =
+      JSON.parse(
+        localStorage.getItem(
+          "routineHistory"
+        )
+      ) || {};
+
+
+    const result =
+      calculateScore();
+
+
+    history[routineDate] = {
+      score:
+        result.score,
+
+      completed:
+        result.completed
+    };
+
+
+    localStorage.setItem(
+      "routineHistory",
+      JSON.stringify(history)
+    );
+
+  }
+
+
+  function updateHistoryDisplay() {
+
+    const history =
+      JSON.parse(
+        localStorage.getItem(
+          "routineHistory"
+        )
+      ) || {};
+
+
+    const historyContainer =
+      document.getElementById(
+        "historyList"
+      );
+
+
+    const entries =
+      Object.entries(history)
+        .sort(
+          (a, b) =>
+            new Date(b[0]) -
+            new Date(a[0])
+        )
+        .slice(0, 7);
+
+
+    if (
+      entries.length === 0
+    ) {
+
+      historyContainer.innerHTML =
+        `
+        <div class="history-item">
+          <span>🌸 Complete today's routine to start your history.</span>
+        </div>
+        `;
+
+      return;
+
+    }
+
+
+    historyContainer.innerHTML = "";
+
+
+    entries.forEach(
+      ([date, data]) => {
+
+        const formattedDate =
+          new Date(
+            date +
+            "T12:00:00"
+          ).toLocaleDateString(
+            "en-IN",
+            {
+              day: "numeric",
+              month: "short"
+            }
+          );
+
+
+        const item =
+          document.createElement(
+            "div"
+          );
+
+
+        item.className =
+          "history-item";
+
+
+        item.innerHTML =
+          `
+            <span>
+              📅 ${formattedDate}
+            </span>
+
+            <strong>
+              ${data.score}%
+            </strong>
+          `;
+
+
+        historyContainer.appendChild(
+          item
+        );
+
+      }
+    );
+
+
+    updateStats(history);
+
+  }
+
+
+  /* ============================================
+     STREAK & BEST SCORE
+  ============================================ */
+
+  function updateStats(history) {
+
+    const scores =
+      Object.values(history)
+        .map(item => item.score);
+
+
+    const best =
+      scores.length
+        ? Math.max(...scores)
+        : 0;
+
+
+    document.getElementById(
+      "bestDisplay"
+    ).textContent =
+      best + "%";
+
+
+    let streak = 0;
+
+
+    const dates =
+      Object.keys(history)
+        .sort(
+          (a, b) =>
+            new Date(b) -
+            new Date(a)
+        );
+
+
+    for (let date of dates) {
+
+      /*
+        Score of 70% or above
+        counts as a successful day.
+      */
+
+      if (
+        history[date].score >= 70
+      ) {
+
+        streak++;
+
+      }
+
+      else {
+
+        break;
+
+      }
+
+    }
+
+
+    document.getElementById(
+      "streakDisplay"
+    ).textContent =
+      streak;
+
+  }
+
+
+  /* ============================================
+     RESET
+  ============================================ */
+
+  function confirmReset() {
+
+    const confirmed =
+      confirm(
+        "Are you sure you want to reset today's routine?"
+      );
+
+
+    if (!confirmed) {
+      return;
+    }
+
+
+    taskStatus = {};
+
+
+    localStorage.removeItem(
+      storageKey
+    );
+
+
+    renderTasks();
+    updateDashboard();
+    updateCurrentTask();
+
+  }
+
+
+  /* ============================================
+     INITIALIZE
+  ============================================ */
+
+  function initialize() {
+
+    showDate();
+
+    renderTasks();
+
+    updateDashboard();
+
+    updateCurrentTask();
+
+
+    if (
+      Notification.permission ===
+      "granted"
+    ) {
+
+      document.getElementById(
+        "notificationButton"
+      ).textContent =
+        "✅ Reminders Enabled";
+
+
+      scheduleReminders();
+
+    }
+
+
+    /*
+      Refresh current activity every minute.
+    */
+
+    setInterval(
+      updateCurrentTask,
+      60000
+    );
+
+  }
+
+
+  initialize();
+
+</script>
+
+</body>
+</html>
